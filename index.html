@@ -68,7 +68,7 @@
         <li><a href="#2">Dynamic Array: Declare a dynamic array</a></li>
         <li><a href="#3">Collection: Create a collection and add items</a></li>
         <li><a href="#4">Collection: Colection with key</a></li>
-        <li><a href="#"></a></li>
+        <li><a href="#5">Array: Write and modify array</a></li>
         <li><a href="#"></a></li>
         <li><a href="#"></a></li>
         <li><a href="#"></a></li>
@@ -167,7 +167,47 @@ Sub CollectionWithKeys()
 End Sub
     </pre>
 
-    <pre>
+    <pre id="5">
+' Array: Write and modify array
+Sub WriteAndModifyArray()
+    Dim ws As Worksheet
+    Set ws = ThisWorkbook.Sheets("Sheet1")
+    
+    Dim data As Variant
+    Dim i As Long, j As Long
+    
+    ' Step 1: Write initial values to A1:D5
+    Dim initialValues As Variant
+    initialValues = Array( _
+    Array("Apple", "Red", 10, "Fruit"), _
+    Array("Banana", "Yellow", 20, "Fruit"), _
+    Array("Carrot", "Orange", 15, "Vegetable"), _
+    Array("Lettuce", "Green", 12, "Vegetable"), _
+    Array("Grape", "Purple", 18, "Fruit") _
+    )
+    
+    ' Write all values to A1:D5 in one line
+    ws.Range("A1:D5").Value = initialValues
+    
+    'For i = 0 To 4
+    '    For j = 0 To 3
+    '        ws.Cells(i + 1, j + 1).Value = initialValues(i)(j)
+    '    Next j
+    'Next i
+    
+    ' Step 2: Store values in an array
+    data = ws.Range("A1:D5").Value
+    
+    ' Step 3: Modify column B (2nd column)
+    For i = 1 To UBound(data, 1)
+        data(i, 2) = "UpdatedColor" & i
+    Next i
+    
+    ' Step 4: Write modified array back to Excel
+    ws.Range("A1:D5").Value = data
+    
+    MsgBox "Values updated successfully!"
+End Sub
     </pre>
 
     <pre>
