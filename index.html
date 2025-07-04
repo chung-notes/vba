@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chung-notes/vba</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #e0eafc, #cfdef3);
+            color: #333;
+        }
+
+        .menu-button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-button:hover {
+            background-color: #2980b9;
+        }
+
+        .menu {
+            display: none;
+            background-color: #ecf0f1;
+            padding: 1rem;
+            margin: 0 1rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content {
+            padding: 1rem;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-left: 5px solid #3498db;
+            overflow-x: auto;
+            font-family: Consolas, monospace;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+<button class="menu-button" onclick="toggleMenu()">☰ Menu</button>
+
+<div class="menu" id="menu">
+    <ul>
+        <li><a href="#">New Note</a></li>
+        <li><a href="#">Save</a></li>
+        <li><a href="#">Export</a></li>
+    </ul>
+</div>
+
+<div class="content">
+    <!-- <h2>Sample VBA Code</h2> -->
+    <pre>
+Sub HelloWorld()
+    Debug.Print "Hello world !"
+    Debug.Print "Don't give up"
+    Debug.Print "Kepp going"
+    Debug.Print "Never stop"
+    Debug.Print "On step at a time"
+    Debug.Print "Push through"
+    Debug.Print "Stay the course"
+    MsgBox "You've got this"
+End Sub
+    </pre>
+</div>
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById("menu");
+        if (menu.style.display === "block") {
+            menu.style.display = "none";
+        } else {
+            menu.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>
