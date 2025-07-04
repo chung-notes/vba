@@ -98,7 +98,7 @@ End Sub
     </pre>
 
     <pre id="1">
-' Declare an array with 3 elements
+' Fixed-Array: Declare an array with 3 elements
 Sub FixedArrayExample()
     Dim fruits(2) As String
 
@@ -115,13 +115,56 @@ Sub FixedArrayExample()
 End Sub
     </pre>
 
-    <pre>
+    <pre id="2">
+' Dynamic Array: Declare a dynamic array
+Sub DynamicArrayExample()
+    Dim numbers() As Integer
+
+    ' Resize the array to hold 3 elements
+    ReDim numbers(1 To 3)
+
+    ' Assign values
+    numbers(1) = 10
+    numbers(2) = 20
+    numbers(3) = 30
+
+    ' Loop through and print values
+    Dim i As Integer
+    For i = 1 To 3
+        Debug.Print numbers(i)
+    Next i
+End Sub
     </pre>
 
-    <pre>
+    <pre id="3">
+' Collection: Create a collection and add items
+Sub CollectionExample()
+    Dim colors As New Collection
+
+    colors.Add "Red"
+    colors.Add "Green"
+    colors.Add "Blue"
+
+    ' Loop through the collection
+    Dim item As Variant
+    For Each item In colors
+        MsgBox item
+    Next item
+End Sub
     </pre>
 
-    <pre>
+    <pre id="4">
+' Collection: Create a collection with keys
+Sub CollectionWithKeys()
+    Dim countries As New Collection
+
+    countries.Add "Japan", "JP"
+    countries.Add "Canada", "CA"
+    countries.Add "Germany", "DE"
+
+    ' Access item by key
+    MsgBox countries("JP")  ' Output: Japan
+End Sub
     </pre>
 
     <pre>
