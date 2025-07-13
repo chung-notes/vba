@@ -111,7 +111,8 @@
       <li><a href="#4">Collection with Key</a></li>
       <li><a href="#5">Write and Modify Array</a></li>
       <li><a href="#6">Get last row of range</a></li>
-      <li><a href="#7">Return last row from a function</a></li>
+      <li><a href="#7">Return last row from a function (Sheet name is tab name)</a></li>
+      <li><a href="#8">Return last row from a function (Sheet name is code name)</a></li>
     </ul>
   </div>
   
@@ -318,7 +319,28 @@ End Function
 
 
 <!-- ============================== -->
-<pre>
+<pre id ="8">
+Sub ExampleUse()
+    Dim lastRow As Long
+    lastRow = GetLastRowFromRange(sh2, "A", "Q")
+
+    Debug.Print lastRow
+End Sub
+
+Function GetLastRowFromRange(ws As Worksheet, startCol As String, endCol As String) As Long
+    Dim lastRow As Long
+    Dim col As Long
+    Dim tempLastRow As Long
+
+    For col = Columns(startCol).Column To Columns(endCol).Column
+        tempLastRow = ws.Cells(ws.Rows.Count, col).End(xlUp).Row
+        If tempLastRow > lastRow Then
+            lastRow = tempLastRow
+        End If
+    Next col
+
+    GetLastRowFromRange = lastRow
+End Function
 </pre>
 <!-- ============================== -->
 
