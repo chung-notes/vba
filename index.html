@@ -111,6 +111,7 @@
       <li><a href="#4">Collection with Key</a></li>
       <li><a href="#5">Write and Modify Array</a></li>
       <li><a href="#6">Get last row of range</a></li>
+      <li><a href="#7">Return last row from a function</a></li>
     </ul>
   </div>
   
@@ -284,31 +285,58 @@ End Sub
 
 
 <!-- ============================== -->
-    <pre>
-    </pre>
+<pre id="7">
+Sub ReturnLastRowFromFunction()
+    Dim wsName As String
+    wsName = "input-csv-data" ' Change as needed
+
+    Dim lastRow As Long
+    lastRow = GetLastRowInRange(wsName, "A", "H")
+
+    Debug.Print lastRow
+End Sub
+
+Function GetLastRowInRange(sheetName As String, startCol As String, endCol As String) As Long
+    Dim ws As Worksheet
+    Set ws = ThisWorkbook.Sheets(sheetName)
+    
+    Dim lastRow As Long
+    Dim col As Long
+    Dim tempLastRow As Long
+    
+    For col = Columns(startCol).Column To Columns(endCol).Column
+        tempLastRow = ws.Cells(ws.Rows.Count, col).End(xlUp).Row
+        If tempLastRow > lastRow Then
+            lastRow = tempLastRow
+        End If
+    Next col
+    
+    GetLastRowInRange = lastRow
+End Function
+</pre>
 <!-- ============================== -->
 
 
 <!-- ============================== -->
-    <pre>
-    </pre>
+<pre>
+</pre>
 <!-- ============================== -->
 
 
 <!-- ============================== -->
-    <pre>
-    </pre>
+<pre>
+</pre>
 <!-- ============================== -->
 
 
 <!-- ============================== -->
-    <pre>
-    </pre>
+<pre>
+</pre>
 <!-- ============================== -->
 
 <!-- ============================== -->
-    <pre>
-    </pre>
+<pre>
+</pre>
 <!-- ============================== -->
   </div>
   <script>
