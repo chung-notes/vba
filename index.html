@@ -110,6 +110,7 @@
       <li><a href="#3">Collection</a></li>
       <li><a href="#4">Collection with Key</a></li>
       <li><a href="#5">Write and Modify Array</a></li>
+      <li><a href="#6">Get last row of range</a></li>
     </ul>
   </div>
   
@@ -259,7 +260,25 @@ End Sub
 
 
 <!-- ============================== -->
-    <pre>
+    <pre id="6">
+Sub GetLastRowOfRage()
+    Dim ws As Worksheet
+    Set ws = Sh3
+
+    Dim lastRow As Long
+    Dim col As Long
+
+    ' A列?Q列の中で最も下までデータがある行を取得
+    For col = 1 To 17 ' A?Qは1?17列
+        Dim tempLastRow As Long
+        tempLastRow = ws.Cells(ws.Rows.Count, col).End(xlUp).Row
+        If tempLastRow > lastRow Then
+            lastRow = tempLastRow
+        End If
+    Next col
+
+    Debug.Print lastRow
+End Sub
     </pre>
 <!-- ============================== -->
 
