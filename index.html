@@ -113,6 +113,7 @@
       <li><a href="#6">Get last row of range</a></li>
       <li><a href="#7">Return last row from a function (Sheet name is tab name)</a></li>
       <li><a href="#8">Return last row from a function (Sheet name is code name)</a></li>
+      <li><a href="#9">Confirm before run (Yes or No)</a></li>
     </ul>
   </div>
   
@@ -341,10 +342,17 @@ Function GetLastRowFromRange(ws As Worksheet, startCol As String, endCol As Stri
 
     GetLastRowFromRange = lastRow
 End Function
-</pre>
+</pre id="9">
 <!-- ============================== -->
+Dim answer As VbMsgBoxResult
+answer = MsgBox("Do you want to export today's data?", vbYesNo + vbQuestion, "Confirmation")
 
-
+If answer = vbYes Then
+    UF_Calendar.Show
+Else
+    MsgBox "Processing has been canceled"
+    Exit Sub
+End If
 <!-- ============================== -->
 <pre>
 </pre>
