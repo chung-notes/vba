@@ -114,6 +114,7 @@
       <li><a href="#7">Return last row from a function (Sheet name is tab name)</a></li>
       <li><a href="#8">Return last row from a function (Sheet name is code name)</a></li>
       <li><a href="#9">Confirm before run (Yes or No)</a></li>
+      <li><a href="#9">Add values to existed array</a></li>
     </ul>
   </div>
   
@@ -354,7 +355,24 @@ Else
     Exit Sub
 End If
 <!-- ============================== -->
-<pre>
+<pre id="10">
+Sub AddValuesToMyArray()
+    Dim myArray() As Variant
+    Dim newValues As Variant
+    Dim i As Long
+    
+    ' 例: myArray 初期化（既に何か入っている）
+    myArray = Array("A", "B", "C", "D", "E", "F", "G")
+    
+    ' E1:E7 の値を取得（2次元配列）
+    newValues = Range("E1:E7").Value
+    
+    ' 各要素に対応する値を追加
+    For i = 0 To UBound(myArray)
+        myArray(i) = myArray(i) & newValues(i + 1, 1)
+        Debug.Print myArray(i)
+    Next i
+End Sub
 </pre>
 <!-- ============================== -->
 
